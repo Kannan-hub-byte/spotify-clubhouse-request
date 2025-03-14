@@ -1,0 +1,229 @@
+Start
+At first you need some collection variables :
+
+auth_token
+user_id
+Phone number
+Email address
+There is a script in Complete request to set auth_token and user_id. Otherwise, enter them manually.
+
+Also, you need to set your phone number and email address.
+-----------------------------------------------------------------------------------------------------------------------------------------
+phone_auth 
+sample Request----
+
+import requests
+import json
+
+url = "https://www.clubhouseapi.com/api/start_phone_number_auth"
+
+payload = json.dumps({
+  "phone_number": "+989123456789"
+})
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+sample response----
+
+{
+  "success": true,
+  "is_blocked": false,
+  "error_message": null
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+GET_RELEASE_NOTES
+
+import requests
+
+url = "https://www.clubhouseapi.com/api/get_release_notes"
+
+payload = ""
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'CH-UserID': '1387526936',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json; charset=utf-8',
+  'Authorization': 'Token 78da002dd191f3781e4a7ff0e8c7136156a8af0c'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+RESPONSE -- {
+  "should_display": true,
+  "title": "🕹 You are now using the latest update of Clubhouse!",
+  "action": "See What's New",
+  "url": "https://whatsnew.joinclubhouse.com"
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+CHECK_FOR_UPDATES 
+
+import requests
+
+url = "https://www.clubhouseapi.com/api/check_for_update?is_testflight=0"
+
+payload = ""
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'CH-UserID': '1387526936',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json; charset=utf-8',
+  'Authorization': 'Token 78da002dd191f3781e4a7ff0e8c7136156a8af0c'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+_RESPONSE---
+{
+  "has_update": false,
+  "success": true
+}
+----------------------------------------------------------------------------------------------------------------------------------------
+WAIT_LIST_CHECK 
+
+import requests
+
+url = "https://www.clubhouseapi.com/api/check_waitlist_status"
+
+payload = ""
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'CH-UserID': '1387526936',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json; charset=utf-8',
+  'Authorization': 'Token 78da002dd191f3781e4a7ff0e8c7136156a8af0c'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+_RESPONSE_
+
+{
+  "is_waitlisted": false,
+  "is_onboarding": true,
+  "analytics_properties": {
+    "SignUpWeek": "2021-10",
+    "SignUpDay": "3/11/2021"
+  },
+  "enable_twitter": true,
+  "num_preselect_follows": 50,
+  "invited_by_user_profile": {
+    "user_id": 109664648,
+    "name": "name",
+    "photo_url": "https://clubhouseprod.s3.amazonaws.com:443/109664648_8c9191c5-663b-465c-b421-70fc553e683d_thumbnail_250x250",
+    "username": "username"
+  },
+  "club": null,
+  "success": true
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+ADD_EMAIL 
+https://www.clubhouseapi.com/api/add_email
+Request for email verification. You only need to do this once.
+
+import requests
+import json
+
+url = "https://www.clubhouseapi.com/api/add_email"
+
+payload = json.dumps({
+  "email": "hatamiarash7@gmail.com"
+})
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'CH-UserID': '1387526936',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json',
+  'Authorization': 'Token 78da002dd191f3781e4a7ff0e8c7136156a8af0c'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+_RESPONSE_
+
+{
+  "success": false,
+  "error_message": "The email has already been verified."
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+GET_SETTINGS_
+
+import requests
+
+url = "https://www.clubhouseapi.com/api/get_settings"
+
+payload = ""
+headers = {
+  'CH-Languages': 'en-US',
+  'CH-Locale': 'en_US',
+  'Accept': 'application/json',
+  'Accept-Encoding': 'gzip, deflate',
+  'CH-AppBuild': '304',
+  'CH-AppVersion': '0.1.28',
+  'CH-UserID': '1387526936',
+  'User-Agent': 'clubhouse/304 (iPhone; iOS 14.4; Scale/2.00)',
+  'Connection': 'close',
+  'Content-Type': 'application/json; charset=utf-8',
+  'Authorization': 'Token 78da002dd191f3781e4a7ff0e8c7136156a8af0c'
+}
+
+response = requests.request("POST", url, headers=headers, data=payload)
+
+print(response.text)
+
+_RESPONSE_
+
+{
+  "notifications_enable_trending": true,
+  "notifications_frequency": 3,
+  "notifications_is_paused": false,
+  "success": true
+}
+-----------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
